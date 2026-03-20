@@ -75,13 +75,6 @@ Message: ${form.message}
         }
       );
 
-      let data;
-try {
-  data = await res.json();
-} catch {
-  data = null;
-}
-
       if (res.ok) {
         setSuccess(true);
 
