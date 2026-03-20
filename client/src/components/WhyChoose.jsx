@@ -1,3 +1,5 @@
+import whychoose from "../assets/why-choose-us.png"
+
 const WhyChoose = () => {
   return (
     <section id="why-choose-us" className="bg-[#F8FAFC] py-[100px] px-6">
@@ -7,7 +9,7 @@ const WhyChoose = () => {
         {/* LEFT IMAGE */}
         <div>
           <img
-            src="/src/assets/why-choose-us.png"
+            src={whychoose}
             alt=""
             className="rounded-2xl shadow-lg w-full object-cover"
           />
