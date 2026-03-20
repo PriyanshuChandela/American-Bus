@@ -1,3 +1,7 @@
+import client from "../assets/client-1.jpg";
+import clientt from "../assets/client-2.jpg";
+import clienttt from "../assets/client-3.jpg";
+
 const Testimonials = () => {
   return (
     <section className="bg-[#0B2A47] py-[100px] px-6 relative overflow-hidden">
@@ -35,7 +39,7 @@ const Testimonials = () => {
             {/* PROFILE */}
             <div className="flex items-center gap-3 mt-6">
               <img
-                src="/src/assets/client-1.jpg"
+                src={client}
                 className="w-10 h-10 rounded-full object-cover border-2 border-red-500"
               />
               <div>
@@ -61,7 +65,7 @@ const Testimonials = () => {
 
             <div className="flex items-center gap-3 mt-6">
               <img
-                src="/src/assets/client-2.jpg"
+                src={clientt}
                 className="w-10 h-10 rounded-full object-cover border-2 border-red-500"
               />
               <div>
@@ -87,7 +91,7 @@ const Testimonials = () => {
 
             <div className="flex items-center gap-3 mt-6">
               <img
-                src="/src/assets/client-3.jpg"
+                src={clienttt}
                 className="w-10 h-10 rounded-full object-cover border-2 border-red-500"
               />
               <div>
