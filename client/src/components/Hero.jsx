@@ -11,7 +11,7 @@ const Hero = () => {
       {/* BACKGROUND */}
       <div className="absolute inset-0">
         <img
-          src="/public/images/hero-background.png"
+          src="/src/assets/hero-background.png"
           alt=""
           className="w-full h-full object-cover"
         />
@@ -75,7 +75,7 @@ const Hero = () => {
         <div className="w-[45%] h-[250px] sm:h-[350px] md:h-[500px] relative">
 
           <img
-            src="/public/images/hero-image.png"
+            src="/src/assets/hero-image.png"
             alt=""
             className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
           />
