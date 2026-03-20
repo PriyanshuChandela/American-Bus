@@ -49,55 +49,23 @@ const ContactForm = () => {
 
     setLoading(true);
 
-    try {
-      const res = await fetch(
-        "http://localhost:5000/api/contact",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: form.name,
-            number: form.phone,
-            email: form.email,
-            subject: "Website Lead",
-            message: `
-Pickup: ${form.pickup}
-Destination: ${form.destination}
-Date: ${form.date}
-Passengers: ${form.passengers}
+    // 🔥 SIMULATED API (replace with your real API if needed)
+    setTimeout(() => {
+      setLoading(false);
+      setSuccess(true);
 
-Message: ${form.message}
-            `,
-            site: "coachbusamerica.com",
-          }),
-        }
-      );
-
-      if (res.ok) {
-        setSuccess(true);
-
-        // RESET FORM
-        setForm({
-          pickup: "",
-          destination: "",
-          date: "",
-          passengers: "",
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-        });
-      } else {
-        setError("Something went wrong!");
-      }
-    } catch (err) {
-      console.error(err);
-      setError("Network error!");
-    }
-
-    setLoading(false);
+      // RESET FORM
+      setForm({
+        pickup: "",
+        destination: "",
+        date: "",
+        passengers: "",
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    }, 1200);
   };
 
   return (
@@ -121,12 +89,14 @@ Message: ${form.message}
             Fill out the form below and our team will get back to you with a customized quote.
           </p>
 
+          {/* ERROR MESSAGE */}
           {error && (
             <div className="mt-4 text-red-500 text-sm bg-red-50 px-4 py-2 rounded-lg">
               {error}
             </div>
           )}
 
+          {/* FORM */}
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -185,10 +155,10 @@ Message: ${form.message}
         </div>
       </div>
 
-      {/* SUCCESS POPUP */}
+      {/* ✅ SUCCESS POPUP */}
       {success && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-xl shadow-xl text-center max-w-sm">
+          <div className="bg-white p-6 rounded-xl shadow-xl text-center max-w-sm animate-fadeIn">
             <h3 className="text-lg font-bold text-[#0B2A47]">
               🎉 Success!
             </h3>
