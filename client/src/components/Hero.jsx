@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
+import heroBg from "../assets/hero-background.png";
+import heroimg from "../assets/hero-image.png"
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -11,10 +13,10 @@ const Hero = () => {
       {/* BACKGROUND */}
       <div className="absolute inset-0">
         <img
-          src="/src/assets/hero-background.png"
-          alt=""
-          className="w-full h-full object-cover"
-        />
+  src={heroBg}
+  alt=""
+  className="w-full h-full object-cover"
+/>
         <div className="absolute inset-0 bg-[#0B2A47]/80 pointer-events-none"></div>
       </div>
 
@@ -75,7 +77,7 @@ const Hero = () => {
         <div className="w-[45%] h-[250px] sm:h-[350px] md:h-[500px] relative">
 
           <img
-            src="/src/assets/hero-image.png"
+            src={heroimg}
             alt=""
             className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
           />
