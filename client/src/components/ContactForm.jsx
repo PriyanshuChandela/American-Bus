@@ -3,7 +3,7 @@ import contactImg from "../assets/contact-request.png";
 import { useLocation } from "react-router-dom";
 
 const ContactForm = () => {
-  const location = useLocation(); // ✅ added
+  const location = useLocation();
 
   const [form, setForm] = useState({
     pickup: "",
@@ -20,13 +20,13 @@ const ContactForm = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  // ✅ PREFILL + SCROLL LOGIC (ADDED)
+  //  PREFILL + SCROLL LOGIC
   useEffect(() => {
     if (location.state?.formData) {
       setForm((prev) => ({
         ...prev,
         pickup: location.state.formData.pickup || "",
-        destination: location.state.formData.drop || "", // mapping
+        destination: location.state.formData.drop || "",
         date: location.state.formData.date || "",
       }));
     }
@@ -46,7 +46,7 @@ const ContactForm = () => {
     setError("");
   };
 
-  // ✅ VALIDATION
+  //  VALIDATION
   const validate = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -62,6 +62,7 @@ const ContactForm = () => {
     return null;
   };
 
+  //  UPDATED API INTEGRATION (ONLY CHANGE)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -73,9 +74,27 @@ const ContactForm = () => {
 
     setLoading(true);
 
-    //  SIMULATED API
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const res = await fetch(
+        "https://n8n.srv1322090.hstgr.cloud/webhook-test/921af5bc-de61-4278-9521-ebbe98b89440",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: form.name,
+            number: form.phone,
+            email: form.email,
+            subject: "New Quote Request",
+            message: `Pickup: ${form.pickup}, Destination: ${form.destination}, Date: ${form.date}, Passengers: ${form.passengers}, Message: ${form.message}`,
+            site: "coachbusamerica.com",
+          }),
+        }
+      );
+
+      await res.json();
+
       setSuccess(true);
 
       setForm({
@@ -88,7 +107,11 @@ const ContactForm = () => {
         phone: "",
         message: "",
       });
-    }, 1200);
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -98,7 +121,6 @@ const ContactForm = () => {
     >
       <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-[48px] items-center">
 
-        {/* LEFT FORM */}
         <div>
           <p className="text-[#E53935] text-[12px] font-semibold uppercase tracking-[2px]">
             CONTACT FORM
@@ -155,7 +177,6 @@ const ContactForm = () => {
           </form>
         </div>
 
-        {/* RIGHT IMAGE */}
         <div className="relative group">
           <img
             src={contactImg}
