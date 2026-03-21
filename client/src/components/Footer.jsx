@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import logo from "/src/assets/logo.svg";
+import { Link as ScrollLink } from "react-scroll";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -78,7 +79,10 @@ const Footer = () => {
             ].map((item, i) => (
               <li
                 key={i}
-                onClick={() => navigate(item.path)}
+                onClick={() => {
+                   navigate(item.path);
+                   window.scrollTo({ top: 0, behavior: "smooth" });
+                 }}
                 className="cursor-pointer hover:text-white transition duration-300 hover:translate-x-1"
               >
                 {item.name}

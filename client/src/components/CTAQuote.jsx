@@ -19,7 +19,10 @@ const CTAQuote = () => {
 
     // Navigate to contact page + scroll to form
     navigate("/contact", {
-      state: { scrollTo: "contact-form" },
+      state: {
+      scrollTo: "contact-form",
+      formData: form, //  send data
+    },
     });
   };
 

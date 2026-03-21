@@ -124,61 +124,86 @@ const Navbar = () => {
         </div>
 
         {/* MOBILE MENU BUTTON */}
-        <button
-          className="md:hidden text-2xl"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          ☰
-        </button>
+        {/* MOBILE MENU BUTTON */}
+<button
+  className="md:hidden text-2xl transition-transform duration-300 hover:scale-110"
+  onClick={() => setMenuOpen(!menuOpen)}
+>
+  {menuOpen ? "✕" : "☰"}
+</button>
 
-      </div>
+</div>
 
-      {/* MOBILE MENU */}
-      {menuOpen && (
-        <div className="md:hidden bg-white shadow-md mt-4 rounded-xl py-6 flex flex-col items-center gap-5 text-gray-700 font-medium">
+{/* MOBILE MENU */}
+<div
+  className={`md:hidden fixed top-0 left-0 w-full h-screen bg-white/95 backdrop-blur-md z-50 transform transition-all duration-500 ease-in-out ${
+    menuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+  }`}
+>
+  <div className="flex flex-col items-center justify-center h-full gap-8 text-gray-800 font-semibold text-lg">
 
-          <RouterLink to="/" onClick={() => setMenuOpen(false)}>
-            Home
-          </RouterLink>
+    {/* Home */}
+    <RouterLink
+      to="/"
+      onClick={() => setMenuOpen(false)}
+      className="hover:text-[#E53935] transition duration-300 hover:scale-105"
+    >
+      Home
+    </RouterLink>
 
-          <button
-            onClick={() => {
-              handleScroll("services");
-              setMenuOpen(false);
-            }}
-          >
-            Services
-          </button>
+    {/* Services */}
+    <button
+      onClick={() => {
+        handleScroll("services");
+        setMenuOpen(false);
+      }}
+      className="hover:text-[#E53935] transition duration-300 hover:scale-105"
+    >
+      Services
+    </button>
 
-          <RouterLink to="/fleet" onClick={() => setMenuOpen(false)}>
-            Our Fleet
-          </RouterLink>
+    {/* Fleet */}
+    <RouterLink
+      to="/fleet"
+      onClick={() => setMenuOpen(false)}
+      className="hover:text-[#E53935] transition duration-300 hover:scale-105"
+    >
+      Our Fleet
+    </RouterLink>
 
-          <button
-            onClick={() => {
-              handleScroll("about");
-              setMenuOpen(false);
-            }}
-          >
-            About
-          </button>
+    {/* Why Choose Us */}
+    <button
+      onClick={() => {
+        handleScroll("why-choose-us");
+        setMenuOpen(false);
+      }}
+      className="hover:text-[#E53935] transition duration-300 hover:scale-105"
+    >
+      Why Choose Us
+    </button>
 
-          <RouterLink to="/contact" onClick={() => setMenuOpen(false)}>
-            Contact
-          </RouterLink>
+    {/* Contact */}
+    <RouterLink
+      to="/contact"
+      onClick={() => setMenuOpen(false)}
+      className="hover:text-[#E53935] transition duration-300 hover:scale-105"
+    >
+      Contact
+    </RouterLink>
 
-          <button
-            onClick={() => {
-              navigate("/contact");
-              setMenuOpen(false);
-            }}
-            className="bg-[#E53935] text-white px-6 py-2 rounded-full"
-          >
-            Get a Quote
-          </button>
+    {/* CTA BUTTON */}
+    <button
+      onClick={() => {
+        navigate("/contact");
+        setMenuOpen(false);
+      }}
+      className="mt-4 bg-gradient-to-r from-[#E53935] to-[#ff6a6a] text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition duration-300"
+    >
+      Get a Quote 🚀
+    </button>
 
-        </div>
-      )}
+  </div>
+</div>
     </nav>
   );
 };

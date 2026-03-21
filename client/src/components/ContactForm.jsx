@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import contactImg from "../assets/contact-request.png";
+import { useLocation } from "react-router-dom";
 
 const ContactForm = () => {
+  const location = useLocation(); // ✅ added
+
   const [form, setForm] = useState({
     pickup: "",
     destination: "",
@@ -16,6 +19,27 @@ const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+
+  // ✅ PREFILL + SCROLL LOGIC (ADDED)
+  useEffect(() => {
+    if (location.state?.formData) {
+      setForm((prev) => ({
+        ...prev,
+        pickup: location.state.formData.pickup || "",
+        destination: location.state.formData.drop || "", // mapping
+        date: location.state.formData.date || "",
+      }));
+    }
+
+    if (location.state?.scrollTo) {
+      const el = document.getElementById(location.state.scrollTo);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location.state]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -49,12 +73,11 @@ const ContactForm = () => {
 
     setLoading(true);
 
-    // 🔥 SIMULATED API (replace with your real API if needed)
+    //  SIMULATED API
     setTimeout(() => {
       setLoading(false);
       setSuccess(true);
 
-      // RESET FORM
       setForm({
         pickup: "",
         destination: "",
@@ -89,14 +112,12 @@ const ContactForm = () => {
             Fill out the form below and our team will get back to you with a customized quote.
           </p>
 
-          {/* ERROR MESSAGE */}
           {error && (
             <div className="mt-4 text-red-500 text-sm bg-red-50 px-4 py-2 rounded-lg">
               {error}
             </div>
           )}
 
-          {/* FORM */}
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -155,7 +176,6 @@ const ContactForm = () => {
         </div>
       </div>
 
-      {/* ✅ SUCCESS POPUP */}
       {success && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-xl shadow-xl text-center max-w-sm animate-fadeIn">
