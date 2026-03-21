@@ -76,7 +76,7 @@ const ContactForm = () => {
 
     try {
       const res = await fetch(
-        "https://n8n.srv1322090.hstgr.cloud/webhook-test/921af5bc-de61-4278-9521-ebbe98b89440",
+        "https://n8n.srv1322090.hstgr.cloud/webhook/921af5bc-de61-4278-9521-ebbe98b89440",
         {
           method: "POST",
           headers: {
@@ -108,6 +108,7 @@ const ContactForm = () => {
         message: "",
       });
     } catch (err) {
+      console.error(err);
       setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
