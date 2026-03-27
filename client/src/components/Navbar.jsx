@@ -6,7 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo.jpeg";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,23 +20,21 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white px-4 md:px-[80px] py-4 shadow-sm relative">
+    <nav className="bg-white px-4 md:px-[80px] py-3 shadow-sm relative">
 
       {/* MAIN CONTAINER */}
       <div className="max-w-[1200px] mx-auto flex items-center justify-between">
 
-        {/* LEFT → LOGO */}
-        <RouterLink to="/" className="flex items-center gap-2">
-          <div className="bg-[#0B2A47] p-2 rounded-md">
-            <img src={logo} alt="logo" className="w-6 h-6" />
-          </div>
+        {/* LOGO */}
+        <RouterLink to="/" className="flex items-center gap-1">
+          <img src={logo} alt="logo" className="w-12 h-12" />
           <div>
             <h1 className="font-bold text-[18px] leading-none">COACH BUS</h1>
             <p className="text-[#E53935] text-xs">AMERICA</p>
           </div>
         </RouterLink>
 
-        {/* CENTER → MENU (DESKTOP ONLY) */}
+        {/* DESKTOP MENU */}
         <ul className="hidden md:flex gap-8 text-gray-700 font-medium items-center absolute left-1/2 transform -translate-x-1/2">
 
           <li>
@@ -49,7 +47,7 @@ const Navbar = () => {
             {location.pathname === "/" ? (
               <ScrollLink
                 to="services"
-                smooth={true}
+                smooth
                 duration={500}
                 className="cursor-pointer hover:text-[#E53935] transition"
               >
@@ -82,7 +80,7 @@ const Navbar = () => {
             {location.pathname === "/" ? (
               <ScrollLink
                 to="why-choose-us"
-                smooth={true}
+                smooth
                 duration={500}
                 className="cursor-pointer hover:text-[#E53935] transition"
               >
@@ -113,97 +111,105 @@ const Navbar = () => {
 
         </ul>
 
-        {/* RIGHT → BUTTON (DESKTOP) */}
+        {/* DESKTOP BUTTON */}
         <div className="hidden md:block">
           <button
-            onClick={() => navigate("/contact", { state: { scrollTo: "contact-form" } })}
-            className="bg-[#E53935] text-white px-5 py-2 rounded-full transition duration-300 hover:bg-[#c92f2f] hover:scale-105"
+            onClick={() =>
+              navigate("/contact", { state: { scrollTo: "contact-form" } })
+            }
+            className="bg-[#E53935] text-white px-5 py-2 rounded-full hover:bg-[#c92f2f] hover:scale-105 transition"
           >
             Get a Quote
           </button>
         </div>
 
         {/* MOBILE MENU BUTTON */}
-        {/* MOBILE MENU BUTTON */}
-<button
-  className="md:hidden text-2xl transition-transform duration-300 hover:scale-110"
-  onClick={() => setMenuOpen(!menuOpen)}
->
-  {menuOpen ? "✕" : "☰"}
-</button>
+        <button
+          className="md:hidden text-2xl"
+          onClick={() => setMenuOpen(true)}
+        >
+          ☰
+        </button>
+      </div>
 
-</div>
+      {/* MOBILE MENU */}
+      <div
+        className={`md:hidden fixed top-0 left-0 w-full h-screen bg-white/95 backdrop-blur-md z-50 transition-all duration-500 ${
+          menuOpen ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
 
-{/* MOBILE MENU */}
-<div
-  className={`md:hidden fixed top-0 left-0 w-full h-screen bg-white/95 backdrop-blur-md z-50 transform transition-all duration-500 ease-in-out ${
-    menuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
-  }`}
->
-  <div className="flex flex-col items-center justify-center h-full gap-8 text-gray-800 font-semibold text-lg">
+        {/* CROSS BUTTON (NEW) */}
+        <div className="absolute top-5 right-5">
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="text-2xl hover:scale-110 transition"
+          >
+            ✕
+          </button>
+        </div>
 
-    {/* Home */}
-    <RouterLink
-      to="/"
-      onClick={() => setMenuOpen(false)}
-      className="hover:text-[#E53935] transition duration-300 hover:scale-105"
-    >
-      Home
-    </RouterLink>
+        {/* MENU ITEMS */}
+        <div className="flex flex-col items-center justify-center h-full gap-8 text-gray-800 font-semibold text-lg">
 
-    {/* Services */}
-    <button
-      onClick={() => {
-        handleScroll("services");
-        setMenuOpen(false);
-      }}
-      className="hover:text-[#E53935] transition duration-300 hover:scale-105"
-    >
-      Services
-    </button>
+          <RouterLink
+            to="/"
+            onClick={() => setMenuOpen(false)}
+            className="hover:text-[#E53935] transition duration-300 active:scale-95"
+          >
+            Home
+          </RouterLink>
 
-    {/* Fleet */}
-    <RouterLink
-      to="/fleet"
-      onClick={() => setMenuOpen(false)}
-      className="hover:text-[#E53935] transition duration-300 hover:scale-105"
-    >
-      Our Fleet
-    </RouterLink>
+          <button
+            onClick={() => {
+              handleScroll("services");
+              setMenuOpen(false);
+            }}
+            className="hover:text-[#E53935] transition duration-300 active:scale-95"
+          >
+            Services
+          </button>
 
-    {/* Why Choose Us */}
-    <button
-      onClick={() => {
-        handleScroll("why-choose-us");
-        setMenuOpen(false);
-      }}
-      className="hover:text-[#E53935] transition duration-300 hover:scale-105"
-    >
-      Why Choose Us
-    </button>
+          <RouterLink
+            to="/fleet"
+            onClick={() => setMenuOpen(false)}
+            className="hover:text-[#E53935] transition duration-300 active:scale-95"
+          >
+            Our Fleet
+          </RouterLink>
 
-    {/* Contact */}
-    <RouterLink
-      to="/contact"
-      onClick={() => setMenuOpen(false)}
-      className="hover:text-[#E53935] transition duration-300 hover:scale-105"
-    >
-      Contact
-    </RouterLink>
+          <button
+            onClick={() => {
+              handleScroll("why-choose-us");
+              setMenuOpen(false);
+            }}
+            className="hover:text-[#E53935] transition duration-300 active:scale-95"
+          >
+            Why Choose Us
+          </button>
 
-    {/* CTA BUTTON */}
-    <button
-      onClick={() => {
-        navigate("/contact");
-        setMenuOpen(false);
-      }}
-      className="mt-4 bg-gradient-to-r from-[#E53935] to-[#ff6a6a] text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition duration-300"
-    >
-      Get a Quote 🚀
-    </button>
+          <RouterLink
+            to="/contact"
+            onClick={() => setMenuOpen(false)}
+            className="hover:text-[#E53935] transition duration-300 active:scale-95"
+          >
+            Contact
+          </RouterLink>
 
-  </div>
-</div>
+          {/* CTA */}
+          <button
+            onClick={() => {
+              navigate("/contact");
+              setMenuOpen(false);
+            }}
+            className="mt-4 bg-[#E53935] text-white px-8 py-3 rounded-full shadow-lg hover:scale-105 active:scale-95 transition"
+          >
+            Get a Quote
+          </button>
+
+        </div>
+      </div>
+
     </nav>
   );
 };
