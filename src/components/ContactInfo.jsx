@@ -62,8 +62,41 @@ const ContactInfo = () => {
 
         </div>
 
-        {/* CARDS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 md:mt-[64px]">
+        {/* ================= MOBILE VERSION ================= */}
+        <div className="flex gap-4 mt-10 overflow-x-auto lg:hidden pb-4">
+
+          {contacts.map((item, i) => (
+            <a
+              key={i}
+              href={item.link}
+              target={item.type === "Office Location" ? "_blank" : ""}
+              rel="noreferrer"
+              className="min-w-[85%] bg-white p-5 rounded-xl border border-gray-100 text-center shadow-sm"
+            >
+
+              <div className={`w-12 h-12 ${item.bg} rounded-full flex items-center justify-center mx-auto mb-4 text-[#0B2A47]`}>
+                {item.icon}
+              </div>
+
+              <h3 className="text-[14px] font-semibold text-[#0B2A47]">
+                {item.type}
+              </h3>
+
+              <p className="text-[#E53935] font-semibold mt-2 text-sm break-words">
+                {item.value}
+              </p>
+
+              <p className="text-gray-400 text-[13px] mt-2">
+                {item.desc}
+              </p>
+
+            </a>
+          ))}
+
+        </div>
+
+        {/* ================= DESKTOP VERSION ================= */}
+        <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 md:mt-[64px]">
 
           {contacts.map((item, i) => (
             <a
@@ -74,22 +107,18 @@ const ContactInfo = () => {
               className="group bg-white p-6 md:p-8 rounded-xl border border-gray-100 text-center transition duration-300 shadow-sm hover:shadow-lg hover:-translate-y-2"
             >
 
-              {/* ICON */}
               <div className={`w-12 h-12 md:w-14 md:h-14 ${item.bg} rounded-full flex items-center justify-center mx-auto mb-4 text-[#0B2A47] transition duration-300 group-hover:bg-[#E53935] group-hover:text-white`}>
                 {item.icon}
               </div>
 
-              {/* TITLE */}
               <h3 className="text-[15px] md:text-[16px] font-semibold text-[#0B2A47]">
                 {item.type}
               </h3>
 
-              {/* VALUE */}
               <p className="text-[#E53935] font-semibold mt-2 break-words">
                 {item.value}
               </p>
 
-              {/* DESC */}
               <p className="text-gray-400 text-sm mt-2">
                 {item.desc}
               </p>

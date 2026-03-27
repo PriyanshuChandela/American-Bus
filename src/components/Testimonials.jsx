@@ -4,7 +4,7 @@ import clienttt from "../assets/client-3.jpg";
 
 const Testimonials = () => {
   return (
-    <section className="bg-[#0B2A47] py-[100px] px-6 relative overflow-hidden">
+    <section className="bg-[#0B2A47] py-[80px] px-6 relative overflow-hidden">
 
       {/* BACKGROUND SHAPE */}
       <div className="absolute right-0 top-0 w-[400px] h-[400px] bg-white/5 rounded-full"></div>
@@ -17,15 +17,92 @@ const Testimonials = () => {
         </p>
 
         {/* HEADING */}
-        <h2 className="text-[36px] font-bold text-white mt-3">
+        <h2 className="text-[28px] lg:text-[36px] font-bold text-white mt-3">
           What Our Customers Say
         </h2>
 
         {/* RED LINE */}
         <div className="w-16 h-[3px] bg-[#E53935] mx-auto mt-4"></div>
 
-        {/* CARDS */}
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
+        {/* ================= MOBILE VERSION ================= */}
+        <div className="flex gap-4 mt-10 overflow-x-auto lg:hidden no-scrollbar pb-4">
+
+          {/* CARD 1 */}
+          <div className="min-w-[85%] bg-white p-5 rounded-2xl text-left shadow-md">
+            <p className="text-yellow-400 text-lg">★★★★★</p>
+
+            <p className="text-gray-600 mt-3 text-[13px] leading-[22px]">
+              "Coach Bus America made our corporate retreat logistics effortless. The driver was professional and the bus was immaculate."
+            </p>
+
+            <div className="flex items-center gap-3 mt-5">
+              <img
+                src={client}
+                className="w-9 h-9 rounded-full object-cover border-2 border-red-500"
+              />
+              <div>
+                <p className="font-semibold text-[#0B2A47] text-sm">
+                  James Wilson
+                </p>
+                <p className="text-gray-400 text-xs">
+                  Event Coordinator
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* CARD 2 */}
+          <div className="min-w-[85%] bg-white p-5 rounded-2xl text-left shadow-md">
+            <p className="text-yellow-400 text-lg">★★★★★</p>
+
+            <p className="text-gray-600 mt-3 text-[13px] leading-[22px]">
+              "We rented a coach for our youth group trip. Safe driving, clean bus, and excellent communication."
+            </p>
+
+            <div className="flex items-center gap-3 mt-5">
+              <img
+                src={clientt}
+                className="w-9 h-9 rounded-full object-cover border-2 border-red-500"
+              />
+              <div>
+                <p className="font-semibold text-[#0B2A47] text-sm">
+                  Sarah Jenkins
+                </p>
+                <p className="text-gray-400 text-xs">
+                  Youth Director
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* CARD 3 */}
+          <div className="min-w-[85%] bg-white p-5 rounded-2xl text-left shadow-md">
+            <p className="text-yellow-400 text-lg">★★★★★</p>
+
+            <p className="text-gray-600 mt-3 text-[13px] leading-[22px]">
+              "Airport transfer for our family reunion was perfect. On time and stress-free experience."
+            </p>
+
+            <div className="flex items-center gap-3 mt-5">
+              <img
+                src={clienttt}
+                className="w-9 h-9 rounded-full object-cover border-2 border-red-500"
+              />
+              <div>
+                <p className="font-semibold text-[#0B2A47] text-sm">
+                  Robert Chen
+                </p>
+                <p className="text-gray-400 text-xs">
+                  Organizer
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* ================= DESKTOP VERSION ================= */}
+        <div className="hidden lg:grid md:grid-cols-3 gap-8 mt-16">
 
           {/* CARD 1 */}
           <div className="bg-white p-6 rounded-2xl text-left shadow-md relative">
@@ -36,7 +113,6 @@ const Testimonials = () => {
               "Coach Bus America made our corporate retreat logistics effortless. The driver was professional and the bus was immaculate. Highly recommended!"
             </p>
 
-            {/* PROFILE */}
             <div className="flex items-center gap-3 mt-6">
               <img
                 src={client}
