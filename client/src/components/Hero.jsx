@@ -2,100 +2,148 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import heroBg from "../assets/hero-background.png";
-import heroimg from "../assets/hero-image.png"
+import heroimg from "../assets/hero-image.png";
 
 const Hero = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative h-[80vh] md:h-[90vh] w-full">
+    <section className="relative w-full lg:h-[823px] flex items-center">
 
-      {/* BACKGROUND */}
-      <div className="absolute inset-0">
+      {/* BACKGROUND (FIXED WITHOUT CHANGING STYLE) */}
+      <div className="absolute inset-0 -z-20 overflow-hidden">
         <img
-  src={heroBg}
-  alt=""
-  className="w-full h-full object-cover"
-/>
-        <div className="absolute inset-0 bg-[#0B2A47]/80 pointer-events-none"></div>
+          src={heroBg}
+          alt=""
+          className="w-full h-full object-cover object-[center_60%] scale-110 lg:scale-100"
+        />
       </div>
 
-      {/* CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-[80px] h-full flex items-center justify-between gap-6">
+      {/* OVERLAY */}
+      <div className="absolute inset-0 -z-10 bg-[#0B2A47]/70"></div>
 
-        {/* LEFT */}
-        <div className="w-[55%] text-white">
+      {/* CONTAINER */}
+      <div className="max-w-[1280px] w-full mx-auto px-[32px] py-[60px] lg:py-[96px]">
 
-          {/* BADGE */}
-          <div className="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-full w-fit">
-            <span className="w-2 h-2 bg-red-500 rounded-full"></span>
-            <span className="text-[10px] sm:text-sm tracking-wide">
+        {/* ================= MOBILE VERSION ================= */}
+        <div className="lg:hidden text-white max-w-[500px]">
+
+          <div className="relative rounded-[20px] overflow-hidden shadow-lg border border-white/10 mb-6">
+            <img
+              src={heroimg}
+              alt="Coach Bus Interior"
+              className="w-full h-[200px] object-cover"
+            />
+
+            <div className="absolute bottom-3 left-3 bg-white text-black px-3 py-2 rounded-lg shadow-md flex items-center gap-2">
+              <div className="w-7 h-7 bg-green-100 rounded-full flex items-center justify-center">
+                🛡️
+              </div>
+              <div>
+                <p className="text-[10px] text-gray-500">SAFETY FIRST</p>
+                <p className="text-xs font-semibold">DOT Certified</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+            <span className="w-2 h-2 bg-[#E53935] rounded-full"></span>
+            <span className="text-sm tracking-wide">
               PREMIUM CHARTER SERVICES
             </span>
           </div>
 
-          {/* HEADING */}
-          <h1 className="text-[20px] sm:text-[28px] md:text-[48px] lg:text-[56px] leading-[28px] sm:leading-[36px] md:leading-[58px] font-bold mt-4 sm:mt-6">
+          <h1 className="mt-6 text-[28px] leading-[1.1] font-bold">
             Reliable Coach <br />
             Bus Transportation <br />
             Across America
           </h1>
 
-          {/* DESCRIPTION */}
-          <p className="text-gray-300 mt-4 sm:mt-6 text-[12px] sm:text-[14px] md:text-[16px] leading-[18px] sm:leading-[22px] md:leading-[26px]">
-            Comfortable, safe, and professional charter bus services for corporate travel, tours, airport transfers, and group transportation nationwide.
+          <p className="mt-4 text-gray-300 text-[14px] leading-[22px]">
+            Safe, comfortable, and reliable bus travel for groups across the nation.
           </p>
 
-          {/* BUTTONS */}
-          <div className="flex flex-col sm:flex-row gap-3 mt-5 sm:mt-8">
-
-            <button
-              onClick={() => navigate("/contact")}
-              className="bg-[#E53935] px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-[#c92f2f] transition"
-            >
-              Get a Quote
-            </button>
-
-            <ScrollLink to="services" smooth duration={500}>
-              <button className="border border-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-base hover:bg-white hover:text-[#0B2A47] transition">
-                View Services
-              </button>
-            </ScrollLink>
-
-          </div>
-
-          {/* FEATURES */}
-          <div className="hidden sm:flex gap-4 mt-6 text-xs sm:text-sm text-gray-300">
-            <span>✔ Nationwide</span>
-            <span>✔ 24/7</span>
-            <span>✔ Top Rated</span>
-          </div>
+          <button
+            onClick={() => navigate("/contact")}
+            className="mt-6 bg-[#E53935] px-6 py-3 rounded-lg font-semibold w-full"
+          >
+            Learn More
+          </button>
 
         </div>
 
-        {/* RIGHT IMAGE */}
-        <div className="w-[45%] h-[250px] sm:h-[350px] md:h-[500px] relative">
+        {/* ================= DESKTOP VERSION ================= */}
+        <div className="hidden lg:flex items-center justify-between gap-10">
 
-          <img
-            src={heroimg}
-            alt=""
-            className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
-          />
+          <div className="w-[52%] text-white">
 
-          {/* FLOATING CARD */}
-          <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-white text-black px-3 py-2 sm:px-4 sm:py-3 rounded-lg sm:rounded-xl shadow-md flex items-center gap-2 sm:gap-3">
-
-            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-green-100 rounded-full flex items-center justify-center text-xs sm:text-sm">
-              🛡️
+            <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+              <span className="w-2 h-2 bg-[#E53935] rounded-full"></span>
+              <span className="text-sm tracking-wide">
+                PREMIUM CHARTER SERVICES
+              </span>
             </div>
 
-            <div>
-              <p className="text-[10px] sm:text-xs text-gray-500">
-                SAFETY FIRST
-              </p>
-              <p className="text-[12px] sm:text-sm font-semibold">
-                DOT Certified
-              </p>
+            <h1 className="mt-6 text-[56px] leading-[1.1] font-bold">
+              Reliable Coach <br />
+              Bus Transportation <br />
+              Across America
+            </h1>
+
+            <p className="mt-5 text-gray-300 text-[15px] leading-[24px] max-w-[520px]">
+              Comfortable, safe, and professional charter bus services for
+              corporate travel, tours, airport transfers, and group
+              transportation nationwide.
+            </p>
+
+            <div className="flex gap-4 mt-7">
+
+              <button
+                onClick={() => navigate("/contact")}
+                className="bg-[#E53935] px-6 py-3 rounded-lg font-semibold hover:bg-[#c92f2f] transition"
+              >
+                Get a Quote
+              </button>
+
+              <ScrollLink to="services" smooth duration={500}>
+                <button className="px-6 py-3 rounded-lg border border-white/40 hover:bg-white hover:text-[#0B2A47] transition">
+                  View Our Services
+                </button>
+              </ScrollLink>
+
+            </div>
+
+            <div className="flex gap-6 mt-8 text-sm text-gray-300">
+              <span>✔ Nationwide</span>
+              <span>✔ 24/7 Support</span>
+              <span>✔ Top Rated</span>
+            </div>
+
+          </div>
+
+          <div className="w-[48%] flex justify-end">
+
+            <div className="relative w-[95%] rounded-[20px] overflow-hidden shadow-xl border border-white/10">
+
+              <img
+                src={heroimg}
+                alt="Coach Bus Interior"
+                className="w-full h-[500px] object-cover"
+              />
+
+              <div className="absolute bottom-4 left-4 bg-white text-black px-4 py-2 rounded-lg shadow-md flex items-center gap-2">
+
+                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                  🛡️
+                </div>
+
+                <div>
+                  <p className="text-xs text-gray-500">SAFETY FIRST</p>
+                  <p className="text-sm font-semibold">DOT Certified</p>
+                </div>
+
+              </div>
+
             </div>
 
           </div>

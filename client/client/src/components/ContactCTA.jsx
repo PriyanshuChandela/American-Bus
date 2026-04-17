@@ -42,10 +42,10 @@ const PlanTripCTA = () => {
 
           {/* CALL BUTTON */}
           <a
-            href="tel:+16625055060"
+            href="tel:8001234567"
             className="border border-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition duration-300 hover:bg-white hover:text-[#2F4B73] hover:scale-105"
           >
-            📞 Call +1(662) 505-5060
+            📞 Call (800) 123-4567
           </a>
 
         </div>
