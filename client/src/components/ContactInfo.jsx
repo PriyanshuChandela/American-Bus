@@ -2,8 +2,8 @@ const ContactInfo = () => {
   const contacts = [
     {
       type: "Phone",
-      value: "(800) 123-4567",
-      link: "tel:+18001234567",
+      value: "+1(662) 505-5060",
+      link: "tel:+16625055060",
       desc: "Available 24/7 for bookings and inquiries",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
