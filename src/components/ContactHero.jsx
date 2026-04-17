@@ -95,7 +95,7 @@ const ContactHero = () => {
           </button>
 
           <a
-            href="tel:+18001234567"
+            href="tel:+16625055060"
             className="border border-white px-6 py-3 rounded-lg flex items-center gap-2 transition duration-300 hover:bg-white hover:text-[#0B2A47] hover:scale-105"
           >
             <svg

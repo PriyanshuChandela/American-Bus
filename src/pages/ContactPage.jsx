@@ -7,7 +7,6 @@ import Footer from "../components/Footer";
 import ContactInfo from "../components/ContactInfo";
 import ContactForm from "../components/ContactForm";
 import FAQ from "../components/FAQ";
-import LocationSection from "../components/LocationSection";
 import ContactCTA from "../components/ContactCTA";
 
 const ContactPage = () => {
@@ -31,7 +30,6 @@ const ContactPage = () => {
       <ContactHero />
       <ContactInfo />
       <ContactForm />
-      <LocationSection />
       <FAQ />
       <ContactCTA />
       <Footer />

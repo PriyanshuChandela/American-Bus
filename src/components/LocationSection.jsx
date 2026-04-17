@@ -1,3 +1,4 @@
+
 const LocationSection = () => {
   const info = [
     {
@@ -100,4 +101,4 @@ const LocationSection = () => {
   );
 };
 
-export default LocationSection;
+export default LocationSection; 
