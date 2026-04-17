@@ -25,19 +25,7 @@ const ContactInfo = () => {
       ),
       bg: "bg-red-100",
     },
-    {
-      type: "Office Location",
-      value: "1234 Transportation Way, New York, NY 10001",
-      link: "https://maps.google.com",
-      desc: "Visit us during business hours",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path d="M12 21s-6-5.5-6-10a6 6 0 1 1 12 0c0 4.5-6 10-6 10z" />
-          <circle cx="12" cy="11" r="2.5" />
-        </svg>
-      ),
-      bg: "bg-gray-100",
-    },
+    
   ];
 
   return (
@@ -63,7 +51,7 @@ const ContactInfo = () => {
         </div>
 
         {/* ================= MOBILE VERSION ================= */}
-        <div className="flex gap-4 mt-10 overflow-x-auto lg:hidden pb-4">
+        <div className="grid grid-cols-2 gap-4 mt-10 lg:hidden">
 
           {contacts.map((item, i) => (
             <a
@@ -71,7 +59,7 @@ const ContactInfo = () => {
               href={item.link}
               target={item.type === "Office Location" ? "_blank" : ""}
               rel="noreferrer"
-              className="min-w-[85%] bg-white p-5 rounded-xl border border-gray-100 text-center shadow-sm"
+              className=" bg-white p-5 rounded-xl border border-gray-100 text-center shadow-sm"
             >
 
               <div className={`w-12 h-12 ${item.bg} rounded-full flex items-center justify-center mx-auto mb-4 text-[#0B2A47]`}>
@@ -96,7 +84,7 @@ const ContactInfo = () => {
         </div>
 
         {/* ================= DESKTOP VERSION ================= */}
-        <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 md:mt-[64px]">
+        <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-12 mt-12 md:mt-[64px]">
 
           {contacts.map((item, i) => (
             <a
