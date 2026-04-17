@@ -231,7 +231,7 @@ const Footer = () => {
 
             <ul className="space-y-4 text-gray-400 text-[14px]">
               <li>📍 1234 Transportation Way, New York</li>
-              <li>📞 (800) 123-4567</li>
+              <li>📞 +1(662) 505-5060</li>
               <li>✉️ info@coachbusamerica.com</li>
             </ul>
 
