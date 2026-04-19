@@ -81,7 +81,6 @@ const Footer = () => {
 
         {/* CONTACT */}
         <div className="mt-8 text-gray-400 text-[14px] space-y-2">
-          <p>📍 New York, USA</p>
           <p>📞 +1(662) 505-5060</p>
           <p>✉️ info@coachbusamerica.com</p>
         </div>
